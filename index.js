@@ -8,6 +8,11 @@ var InputAutogrow = function(ele) {
 
   this.placeholder = (this.element.placeholder || '');
 
+  this.create_elements();
+  this.bind();
+}
+
+InputAutogrow.prototype.create_elements = function() {
   this.wrapper = document.createElement('div');
   this.wrapper.style.display = 'inline-block';
   this.wrapper.style.position = 'relative';
@@ -25,7 +30,8 @@ var InputAutogrow = function(ele) {
   this.element.style.left = 0;
   this.element.style.top = 0;
   this.wrapper.appendChild(this.element);
-
+}
+InputAutogrow.prototype.bind = function() {
   var self = this;
   var updateContent = function () {
     self.content.innerHTML = (this.value == "" ? self.placeholder : this.value.replace(' ', '&nbsp;'));
